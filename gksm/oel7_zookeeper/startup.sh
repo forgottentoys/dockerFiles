@@ -35,7 +35,7 @@ while [[ -n "$1" ]]; do
         esac
 	shift
 done
-mv $ZOO_TMP_CFG $ZOO_CFG
+cp $ZOO_TMP_CFG $ZOO_CFG
 }
 
 if [[ -z "$4" ]]; then
