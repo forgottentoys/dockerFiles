@@ -15,4 +15,5 @@ yum clean all;
 
 EXPOSE  5050
 
-CMD /usr/bin/mesos-init-wrapper master
+#CMD /usr/bin/mesos-init-wrapper master
+CMD /usr/sbin/mesos-master
