@@ -17,6 +17,7 @@ docker run -d \
 --name=mesos_master_1 \
 --privileged \
 --net=host \
+--restart always \
 -p "5050:5050" \
 -e "MESOS_IP=127.0.0.1" \
 -e "MESOS_HOSTNAME=hostname" \
@@ -25,16 +26,17 @@ docker run -d \
 -e "MESOS_LOG_DIR=/var/log/mesos" \
 -e "MESOS_QUORUM=1" \
 -e "MESOS_REGISTRY=in_memory" \
+-e "MESOS_CLUSTER=MyCluster" \
 -e "MESOS_WORK_DIR=/var/lib/mesos" \
 -e "MESOS_LOG_DIR=/var/log/mesos" \
 -v "/media/data/mesos/master/log:/var/log/mesos" \
--v "/media/data/mesos/master/tmp:/var/tmp/mesos" \
+-v "/media/data/mesos/master/work:/var/lib/mesos" \
 gksm/oel7_mesos
 
 
 oel7_marathon
 ------------------------------------------------------------------------------------------------------------------------------------
-docker run -it --rm \
+docker run -d \
 -e "MARATHON_HOSTNAME=hostname" \
 -e "MARATHON_MASTER=zk://hostname:2181/mesos" \
 -e "MARATHON_ZK=zk://hostname:2181/marathon" \
