@@ -48,3 +48,10 @@ docker run -d \
 --restart always \
 gksm/oel7_marathon
 
+mesosphere/mesos-dns
+-------------------------------------------------------------------------------------------------------------------------------
+docker run -d \
+--net=host \
+-v "/media/data/mesos-dns/config.json:/config.json" \
+-v "/media/data/mesos-dns/logs:/tmp" \
+mesosphere/mesos-dns:0.5.2 /usr/bin/mesos-dns -v=2 -config=/config.json
